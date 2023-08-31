@@ -6,3 +6,4 @@ matplotlib==3.3.4
 pysndfx==0.3.6
 pyroomacoustics==0.4.3
 opencv-python
+numpy==1.21.0
