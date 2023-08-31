@@ -49,3 +49,24 @@ sample_videos*
 # lonesnake 
 .lonesnake/
 
+\.idea
+\.vscode
+\results
+\__pycache__
+*\__pycache__
+
+.tmp/
+data/
+temp/
+pretrained_models/
+pretrained_model_checkpoints/
+*.ipynb_checkpoints/
+
+speechbrain/
+log/ 
+
+*.wav
+
+*.err
+*.out
+
