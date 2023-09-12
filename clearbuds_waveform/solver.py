@@ -2,14 +2,14 @@
 # Author: Kaituo XU
 
 import os
+import sys
 import time
 
 import torch
 import torch.nn.functional as F
-
-from pit_criterion import cal_loss
-from stft_loss import MultiResolutionSTFTLoss
-from phase_loss import FourierTransform
+sys.path.append(os.path.expanduser('~'))
+from clearbuds_waveform.stft_loss import MultiResolutionSTFTLoss
+from clearbuds_waveform.phase_loss import FourierTransform
 
 LOOKAHEAD = 700  # Samples of lookeahead at 15625 khz
 PADDING_AMOUNT = 25400 - LOOKAHEAD  # Complicated calculation, zero pad front

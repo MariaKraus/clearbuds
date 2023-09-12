@@ -1,11 +1,10 @@
 import argparse
-
-import librosa
+import os
+import sys
 import numpy as np
 import torch
 import torch.nn.functional as F
-from conv_tasnet import ConvTasNet
-import soundfile as sf
+from clearbuds_waveform.conv_tasnet import ConvTasNet
 
 LOOKAHEAD = 700
 PADDING_AMOUNT = 25400 - LOOKAHEAD
@@ -28,7 +27,6 @@ def evaluate(model_path, data_l, data_r, use_cuda):
     data = np.stack([data_l, data_r], axis=0)
 
     mixture = torch.FloatTensor(data).unsqueeze(0)
-
     if use_cuda:
         mixture = mixture.cuda()
 

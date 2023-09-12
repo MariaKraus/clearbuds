@@ -1,12 +1,14 @@
 # Created on 2018/12
 # Author: Kaituo XU
+import os
+import sys
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from utils import overlap_and_add
-from solver import LOOKAHEAD
+sys.path.append(os.path.expanduser('~'))
+from clearbuds_waveform.solver import LOOKAHEAD
 
 EPS = 1e-8
 
