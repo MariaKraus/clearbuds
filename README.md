@@ -1,32 +1,23 @@
-Installation
+# Clearbuds example
 
-GitHubRepo: https://github.com/vivjay30/clearbuds
+The repository adapts the example from https://github.com/vivjay30/clearbuds.
+It uses the same models and the example use case from 'cascaded.sh'.
 
-conda create -n clearbuds python=3.8
+### Installation with Anaconda
 
-conda activate clearbuds
+```
+conda create -n clearbud_env python=3.8
 
-export PYTHONPATH=$PYTHONPATH:pwd`` #add your own path
+conda activate clearbud_env
 
-(z. B.: export PYTHONPATH=$PYTHONPATH:"/home/maria/clearbuds")
+pip3 install torch torchvision torchaudio
 
-navigate to the clearbuds directory: cd clearbuds
+cd clearbuds
 
-install the requirements: pip install -r requirements.txt
+pip install -r requirements.txt
+```
+### Run
 
-Unzip: unzip 2voices_synthetic_test.zip
-
-cd into clearbuds_waveform/src/
-
-Run:
-
-CUDA\_VISIBLE\_DEVICES=0 python evaluate\_cascaded.py \\ --model-path checkpoints/clearvoice\_iphone\_causal\_mixed\_l1spec\_loss\_large/final\_37epochs.pth.tar \\ --data-dir ../../test \\ --n-mics 2 \\ --n-speakers 2 \\ --sample-rate 15625 \\ --chunk-size 46850 --unet-checkpoint unet.pt
-
-run with --use-cuda 0 flag, the GPU version just doesn’t work!!!!
-
-Run own example
-resampled audio data to 16khz
-put our own audio files in /home/maria/clearbuds/clearbuds_waveform/src/real_examples/
-conda activate clearbuds_env2
-export PYTHONPATH=$PYTHONPATH:"/home/maria/clearbuds”
-run ./cascaded_cpu.sh 20210909_16.30.53
+```
+python3 main.py --dir_data "/path/to/data_directory" --left_channel 0 , --right_channel 1 
+```
