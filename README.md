@@ -16,6 +16,12 @@ cd clearbuds
 
 pip install -r requirements.txt
 ```
+### Models
+
+- Download the clearbud repo: https://drive.google.com/file/d/1C1m7UjZRNVq84jzx49krJ5tsaaMwalRG/view?usp=sharing 
+- Copy the models: final.pth.tar and model.pt to a folder called 'models' in this clearbuds directory. 
+
+
 ### Run
 
 ```
