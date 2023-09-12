@@ -31,9 +31,7 @@ sample_videos*
 
 # Models
 *.zip
-*.pt
 *.pth
-*.tar*
 *.csv
 *.h5
 *.mlmodel
