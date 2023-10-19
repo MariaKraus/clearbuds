@@ -20,7 +20,7 @@ def main(dir_src, left_channel, right_channel, output_dir, sample_rate, chunk_du
         directories = file.split(os.path.sep)
         sep = "/"
         # create output directory if it does not exist
-        output_dir_file = os.path.expanduser('~') + output_dir + sep + sep.join(directories[5:-1])
+        output_dir_file = output_dir + sep + sep.join(directories[5:-1])
         if not os.path.exists(output_dir_file):
             os.makedirs(output_dir_file)
         output_file = output_dir_file + sep + directories[-1]
@@ -43,6 +43,10 @@ def main(dir_src, left_channel, right_channel, output_dir, sample_rate, chunk_du
             # Append the processed chunk to the list
             processed_chunks.append(output)
 
+        if len(processed_chunks) == 0:
+            print("No chunks were processed")
+            sf.write(output_file, [], sample_rate)
+            continue
         # Combine the processed chunks into one audio file
         combined_output = np.concatenate(processed_chunks)
         # Save the combined audio file
@@ -57,11 +61,13 @@ if __name__ == "__main__":
     parser.add_argument("--right_channel", type=int, default=(9 - 1))
     parser.add_argument("--output_dir", type=str, help="Path to save model",
                         default=os.path.expanduser('~') + "/clearbuds_small/results")
+    # The paper uses this sample rate
     parser.add_argument('--sample-rate', default=15625, type=int,
                         help='Sample rate')
+    #
     parser.add_argument('--use-cuda', type=int, default=1,
-                        help='Whether use GPU')
-    parser.add_argument("--cutoff", type=float, default=.003)
+                        help='Whether to use GPU')
+    parser.add_argument("--cutoff", type=float, default=0.0001)
     parser.add_argument("--chunk_duration", type=int, default=30)
 
     args = parser.parse_args()
